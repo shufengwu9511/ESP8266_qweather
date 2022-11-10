@@ -12,13 +12,13 @@ void WeatherForecast::config(String userKey, String location, String unit, Strin
 
 bool WeatherForecast::get() {
   // https请求
-  std::unique_ptr<BearSSL::WiFiClientSecure>client(new BearSSL::WiFiClientSecure);
+  std::unique_ptr<BearSSL::WiFiClientSecure> client(new BearSSL::WiFiClientSecure);
   client->setInsecure(); // 不进行服务器身份认证
   HTTPClient https;
   #ifdef DEBUG
   Serial.print("[HTTPS] begin...\n");
   #endif DEBUG
-  String url = "https://devapi.heweather.net/v7/weather/3d?location=" + _reqLocation +
+  String url = "https://devapi.qweather.com/v7/weather/3d?location=" + _reqLocation +
               "&key=" + _requserKey + "&unit=" + _reqUnit + "&lang=" + _reqLang + "&gzip=n";
   if (https.begin(*client, url)) {  // HTTPS连接成功
     #ifdef DEBUG
@@ -51,6 +51,7 @@ bool WeatherForecast::get() {
     #endif DEBUG
     return false;
   }
+  return false;
 }
 
 void WeatherForecast::_parseNowJson(String payload) {
