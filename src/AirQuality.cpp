@@ -17,8 +17,8 @@ void AirQuality::_parseNowJson(String payload) {
 
   deserializeJson(doc, payload);
 
-  const char* code = doc["code"];
-  const char* updateTime = doc["updateTime"];
+  // const char* code = doc["code"];
+  // const char* updateTime = doc["updateTime"];
   JsonObject now = doc["now"];
 
   _response_code = doc["code"].as<String>();         // API状态码
