@@ -17,8 +17,8 @@ void WeatherForecast::_parseNowJson(String payload) {
 
   deserializeJson(doc, payload);
 
-  const char* code = doc["code"];
-  const char* updateTime = doc["updateTime"];
+  // const char* code = doc["code"];
+  // const char* updateTime = doc["updateTime"];
   JsonArray daily = doc["daily"];
   JsonObject daily_0 = daily[0];
   JsonObject daily_1 = daily[1];
@@ -62,51 +62,51 @@ void WeatherForecast::_parseNowJson(String payload) {
 
 // 返回日出时间
 String WeatherForecast::getSunRise(int index) {
-  return _daily_sunrise_str[index];
+  return _daily_sunrise_str[index%3];
 }
 
 // 返回最高气温
 int WeatherForecast::getTempMax(int index) {
-  return _daily_tempMax_int[index];
+  return _daily_tempMax_int[index%3];
 }
 
 // 返回最低气温
 int WeatherForecast::getTempMin(int index) {
-  return _daily_tempMin_int[index];
+  return _daily_tempMin_int[index%3];
 }
 
 // 返回白天天气状况的图标代码
 int WeatherForecast::getIconDay(int index) {
-  return _daily_iconDay_int[index];
+  return _daily_iconDay_int[index%3];
 }
 
 // 返回天气状况的文字描述
 String WeatherForecast::getTextDay(int index) {
-  return _daily_textDay_str[index];
+  return _daily_textDay_str[index%3];
 }
 
 // 返回白天风向
 String WeatherForecast::getWindDirDay(int index) {
-  return _daily_windDirDay_str[index];
+  return _daily_windDirDay_str[index%3];
 }
 
 // 返回白天风力等级
 String WeatherForecast::getwindScaleDay(int index) {
-  return _daily_windScaleDay_str[index];
+  return _daily_windScaleDay_str[index%3];
 }
 
 // 返回当天相对湿度百分比数值
 int WeatherForecast::getHumidity(int index) {
-  return _daily_humidity_int[index];
+  return _daily_humidity_int[index%3];
 }
 
 // 返回当天降水量，毫米
 float WeatherForecast::getPrecip(int index) {
-  return _daily_precip_float[index];
+  return _daily_precip_float[index%3];
 }
 
 // 返回当天紫外线强度指数
 int WeatherForecast::getUvIndex(int index) {
-  return _daily_uvIndex_int[index];
+  return _daily_uvIndex_int[index%3];
 }
 

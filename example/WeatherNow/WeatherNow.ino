@@ -9,7 +9,7 @@ String Unit = "m";             // 公制-m/英制-i
 String Lang = "zh";            // 语言 英文-en/中文-zh
 float ROUND = 1.5;             // 更新间隔<分钟>实时天气API 10~20分钟更新一次
 
-WeatherNow weatherNow;
+HourlyForecast weatherNow;
 
 void setup(){
   Serial.begin(9600);

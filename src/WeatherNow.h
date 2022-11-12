@@ -4,9 +4,9 @@
 #include <QWeatherApi.h>
 // #define DEBUG // 调试用
 
-class WeatherNow :public QWeatherApi{
+class HourlyForecast :public QWeatherApi{
   public:
-    WeatherNow();
+    HourlyForecast();
     bool get() override;
     int getTemp();
     int getFeelLike();
@@ -17,7 +17,7 @@ class WeatherNow :public QWeatherApi{
     float getHumidity();
     float getPrecip();
   protected:
-    void _parseNowJson(String payload);  // 解析json信息
+    void _parseNowJson(String payload) override;  // 解析json信息
   private:
     int _now_temp_int = 999;             // 实况温度
     int _now_feelsLike_int = 999;        // 实况体感温度
