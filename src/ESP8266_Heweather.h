@@ -4,4 +4,6 @@
 #include "WeatherNow.h"
 #include "WeatherForecast.h"
 #include "AirQuality.h"
+#include "AirQualityForecast.h"
+#include "HourlyForecast.h"
 #endif
