@@ -4,9 +4,9 @@
 #include <QWeatherApi.h>
 // #define DEBUG // 调试用
 
-class HourlyForecast :public QWeatherApi{
+class WeatherNow :public QWeatherApi{
   public:
-    HourlyForecast();
+    WeatherNow();
     bool get() override;
     int getTemp();
     int getFeelLike();

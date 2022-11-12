@@ -1,15 +1,15 @@
 #include "WeatherNow.h"
 
-HourlyForecast::HourlyForecast() {
+WeatherNow::WeatherNow() {
 }
 // 尝试获取信息，成功返回true，失败返回false
-bool HourlyForecast::get() {
+bool WeatherNow::get() {
   String url = "https://devapi.qweather.com/v7/weather/now";
   return getFrom(url);
 }
 
 // 解析Json信息
-void HourlyForecast::_parseNowJson(String payload) {
+void WeatherNow::_parseNowJson(String payload) {
   const size_t capacity = 2*JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(2) + JSON_OBJECT_SIZE(5) +
                           JSON_OBJECT_SIZE(15) + 350;
   DynamicJsonDocument doc(capacity);
@@ -32,40 +32,40 @@ void HourlyForecast::_parseNowJson(String payload) {
 
 
 // 实况温度
-int HourlyForecast::getTemp() {
+int WeatherNow::getTemp() {
   return _now_temp_int;
 }
 
 // 实况体感温度
-int HourlyForecast::getFeelLike() {
+int WeatherNow::getFeelLike() {
   return _now_feelsLike_int;
 }
 
 // 当前天气状况和图标的代码
-int HourlyForecast::getIcon() {
+int WeatherNow::getIcon() {
   return _now_icon_int;
 }
 
 // 实况天气状况的文字描述
-String HourlyForecast::getWeatherText() {
+String WeatherNow::getWeatherText() {
   return _now_text_str;
 }
 
 // 实况风向
-String HourlyForecast::getWindDir() {
+String WeatherNow::getWindDir() {
   return _now_windDir_str;
 }
 
 // 实况风力等级
-int HourlyForecast::getWindScale() {
+int WeatherNow::getWindScale() {
   return _now_windScale_int;
 }
 
 // 实况相对湿度百分比数值
-float HourlyForecast::getHumidity() {
+float WeatherNow::getHumidity() {
   return _now_humidity_float;
 }
 // 实况降水量,毫米
-float HourlyForecast::getPrecip() {
+float WeatherNow::getPrecip() {
   return _now_precip_float;
 }
