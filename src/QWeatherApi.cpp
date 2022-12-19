@@ -19,38 +19,38 @@ bool QWeatherApi::getFrom(String baseurl) {
   HTTPClient https;
   #ifdef DEBUG
   Serial.print("[HTTPS] begin...\n");
-  #endif DEBUG
+  #endif //DEBUG
   String url = baseurl+"?"+_query_str;
 
   if (https.begin(*client, url)) {  // HTTPS连接成功
     #ifdef DEBUG
     Serial.print("[HTTPS] GET...\n");
-    #endif DEBUG
+    #endif// DEBUG
     int httpCode = https.GET(); // 请求
 
     if (httpCode > 0) { // 错误返回负值
       #ifdef DEBUG
       Serial.printf("[HTTPS] GET... code: %d\n", httpCode);
-      #endif DEBUG
+      #endif //DEBUG
       if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) { // 服务器响应
         String payload = https.getString();
         #ifdef DEBUG
         Serial.println(payload);
-        #endif DEBUG
+        #endif //DEBUG
         _parseNowJson(payload);
         return true;
       }
     } else { // 错误返回负值
       #ifdef DEBUG
       Serial.printf("[HTTPS] GET... failed, error: %s\n", https.errorToString(httpCode).c_str());
-      #endif DEBUG
+      #endif //DEBUG
       return false;
     }
     https.end();
   } else { // HTTPS连接失败
     #ifdef DEBUG
     Serial.printf("[HTTPS] Unable to connect\n");
-    #endif DEBUG
+    #endif //DEBUG
     return false;
   }
   return false;

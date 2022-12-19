@@ -36,7 +36,7 @@ void AirQualityForecast::_parseNowJson(String payload)
     for (JsonObject daily_item : doc["daily"].as<JsonArray>())
     {
 
-        // const char *daily_item_fxDate = daily_item["fxDate"];     // "2022-11-12", "2022-11-13", "2022-11-14", ...
+        _fx_date_str[i] = daily_item["fxDate"].as<String>();     // "2022-11-12", "2022-11-13", "2022-11-14", ...
         _aqi_int[i] = daily_item["aqi"].as<int>(); // "38", "37", "70", "56", "78"
         //_category_str[i] = daily_item["level"];       // "1", "1", "2", "2", "2"
         _category_str[i] = daily_item["category"].as<String>(); // "优", "优", "良", "良", "良"
@@ -68,4 +68,8 @@ String AirQualityForecast::getCategory(int index)
 String AirQualityForecast::getPrimary(int index)
 {
     return _primary_str[index % 5];
+}
+String AirQualityForecast::getFxDate(int index)
+{
+    return _fx_date_str[index % 5];
 }
